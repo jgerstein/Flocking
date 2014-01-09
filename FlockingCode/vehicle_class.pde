@@ -53,8 +53,8 @@ class Vehicle {
     PVector cohere = cohere(vehicles);
     PVector seek = seek(mouse);
     PVector align = align(vehicles);
-    separate.mult(1);
-    cohere.mult(1);
+    separate.mult(1.2);
+    cohere.mult(2);
     align.mult(1);
     seek.mult(0);
     applyForce(separate);
@@ -144,12 +144,9 @@ class Vehicle {
     }
     if (count > 0) {
       sum.div(count);
-      sum.normalize();
-      sum.mult(maxSpeed);
-      steer = PVector.sub(sum, vel);
-      steer.mult(responsiveness);
+      
     }
-    return steer;
+    return seek(sum);
   }
 }
 
