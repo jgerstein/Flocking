@@ -3,6 +3,7 @@ class Bird {
   int size;
   float maxspeed;
   float maxforce;
+  float ncoh,nali,navo;
 
   Bird(float x, float y) {
     loc = new PVector(x, y);
@@ -40,8 +41,11 @@ class Bird {
     PVector ali = align(everyone);
 
     coh.mult(map(bars[0].position(), 0, 1, 0, 2.5));
+    ncoh = map(bars[5].position(),0,1,0,min(width,height));
     avo.mult(map(bars[1].position(), 0, 1, 0, 2.5));
+    navo = map(bars[6].position(),0,1,0,min(width,height));
     ali.mult(map(bars[2].position(), 0, 1, 0, 2.5));
+    nali = map(bars[7].position(),0,1,0,min(width,height));
 
     applyForce(coh);
     applyForce(avo);
@@ -61,7 +65,7 @@ class Bird {
   }
   PVector avoid(ArrayList<Bird> everybody) {
     int count = 0;
-    int neighborhood = 50;
+    float neighborhood = navo;
     PVector sum = new PVector();
     for (Bird other : birds) {
       float d = loc.dist(other.loc);
@@ -86,7 +90,7 @@ class Bird {
   }
   PVector align(ArrayList<Bird> everybody) {
     int count = 0;
-    int neighborhood = 100;
+    float neighborhood = nali;
     PVector sum = new PVector();
     for (Bird other : birds) {
       float d = loc.dist(other.loc);
@@ -110,7 +114,7 @@ class Bird {
 
   PVector cohere(ArrayList<Bird> everybody) {
     int count = 0;
-    int neighborhood = 100;
+    float neighborhood = ncoh;
     PVector sum = new PVector();
     for (Bird other : birds) {
       float d = loc.dist(other.loc);

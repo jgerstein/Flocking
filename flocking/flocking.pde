@@ -1,6 +1,6 @@
 ArrayList<Bird> birds = new ArrayList<Bird>();
-ScrollBar[] bars = new ScrollBar[5];
-String[] titles = {"Cohere", "Avoid", "Align","Max Speed","Max Steering"};
+ScrollBar[] bars = new ScrollBar[8];
+String[] titles = {"Cohere", "Avoid", "Align","Max Speed","Max Steering","Cohere distance","Avoid distance","Align distance"};
 PVector mouse = new PVector();
 
 void setup() {
